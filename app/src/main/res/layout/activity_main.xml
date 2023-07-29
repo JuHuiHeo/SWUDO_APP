@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity"
+    android:orientation="vertical"
+    android:background="#0F1012">
+
+    <LinearLayout
+        android:id="@+id/upper_margin"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="0.4"/>
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="80dp"
+        android:src="@drawable/swudo"
+        android:layout_gravity="center"
+        android:layout_centerHorizontal="true">
+    </ImageView>
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/mainrogo"
+        android:layout_gravity="center"
+        android:layout_centerHorizontal="true">
+    </ImageView>
+
+    <LinearLayout
+        android:id="@+id/logobottom_margin"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="0.2"/>
+
+    <EditText
+        android:id="@+id/editID"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:background="@drawable/textlayout"
+        android:ems="10"
+        android:hint="아이디"
+        style="@style/Editpretendardmedium"
+        android:textColorHint="#FFFFFF"
+        android:inputType="textEmailAddress"
+        android:text=""
+        android:paddingLeft="16dp"/>
+
+    <LinearLayout
+        android:id="@+id/textbutton_margin"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="0.05"/>
+
+    <EditText
+        android:id="@+id/editPW"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:background="@drawable/textlayout"
+        android:ems="10"
+        android:hint="비밀번호"
+        style="@style/Editpretendardmedium"
+        android:textColorHint="#FFFFFF"
+        android:inputType="textPassword"
+        android:text=""
+        android:paddingLeft="16dp"/>
+
+    <LinearLayout
+        android:id="@+id/textbuttonbottom_margin"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="0.05"/>
+
+    <android.widget.Button
+        android:id="@+id/button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:background="@drawable/loginbutton_default" />
+
+    <LinearLayout
+        android:id="@+id/loginbuttonbottom_margin"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="0.1"/>
+
+    <android.widget.Button
+        android:id="@+id/signupbutton"
+        android:layout_width="wrap_content"
+        android:layout_height="23dp"
+        android:layout_gravity="center"
+        android:background="@drawable/signupbutton" />
+
+    <LinearLayout
+        android:id="@+id/buttom_margin"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="0.9"/>
+</LinearLayout>

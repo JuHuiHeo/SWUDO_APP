@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity"
+    android:orientation="horizontal"
+    android:background="#0F1012">
+
+    <LinearLayout
+        android:id="@+id/signup3_left_margin"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_weight="0.05"/>
+
+    <!-- 첫 번째 LinearLayout (수평 방향) -->
+    <LinearLayout
+        android:id="@+id/first3_horizontal_layout"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="0.5"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:id="@+id/signup3_upper_margin"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.15"
+            android:orientation="horizontal">
+        </LinearLayout>
+
+        <android.widget.Button
+            android:id="@+id/backbutton3"
+            android:layout_width="10dp"
+            android:layout_height="10dp"
+            android:layout_gravity=""
+            android:background="@drawable/backbutton" />
+
+        <LinearLayout
+            android:id="@+id/backbuttonbottom3_margin"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.07"
+            android:orientation="horizontal">
+        </LinearLayout>
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/signup_nicknameplease"
+            android:layout_gravity=""
+            android:layout_centerHorizontal="true">
+        </ImageView>
+
+        <LinearLayout
+            android:id="@+id/newnickname_upper_margin"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.3"
+            android:orientation="horizontal">
+        </LinearLayout>
+
+        <EditText
+            android:id="@+id/newNickname"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:background="@drawable/textlayout"
+            android:ems="10"
+            android:hint="닉네임"
+            style="@style/Editpretendardmedium"
+            android:textColorHint="#FFFFFF"
+            android:inputType=""
+            android:text=""
+            android:privateImeOptions="defaultInputmode=korean"
+            android:paddingLeft="16dp"/>
+
+        <LinearLayout
+            android:id="@+id/newnickname_bottom_margin"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.03"
+            android:orientation="horizontal">
+        </LinearLayout>
+
+        <android.widget.Button
+            android:id="@+id/completebutton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:background="@drawable/completebutton_default" />
+
+        <LinearLayout
+            android:id="@+id/completebutton_bottom_margin"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.7"
+            android:orientation="horizontal">
+        </LinearLayout>
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:id="@+id/signup3_right_margin"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_weight="0.05"/>
+
+</LinearLayout>

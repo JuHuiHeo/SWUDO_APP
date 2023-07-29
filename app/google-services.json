@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "657763925380",
+    "project_id": "guru-login-1e52a",
+    "storage_bucket": "guru-login-1e52a.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:657763925380:android:d55bf386d6d5ad112731d1",
+        "android_client_info": {
+          "package_name": "com.example.gurulogin"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "657763925380-4bgjehpmbk76lu4oc8mvc8lccil5p1hr.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.gurulogin",
+            "certificate_hash": "3b0ed4d85cadb2f53aac2f4f4e32baff7ac6aefe"
+          }
+        },
+        {
+          "client_id": "657763925380-b6jcs29uqdvqq9gb9jj82kg1mtdk6j4q.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDTJbOuJuMiErEKY8EUnKrxqW50EEeIeLk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "657763925380-b6jcs29uqdvqq9gb9jj82kg1mtdk6j4q.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

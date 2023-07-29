@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity"
+    android:orientation="horizontal"
+    android:background="#0F1012">
+
+    <LinearLayout
+        android:id="@+id/signup2_left_margin"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_weight="0.05"/>
+
+    <!-- 첫 번째 LinearLayout (수평 방향) -->
+    <LinearLayout
+        android:id="@+id/first2_horizontal_layout"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="0.5"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:id="@+id/signup2_upper_margin"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.15"
+            android:orientation="horizontal">
+        </LinearLayout>
+
+        <android.widget.Button
+            android:id="@+id/backbutton2"
+            android:layout_width="10dp"
+            android:layout_height="10dp"
+            android:layout_gravity=""
+            android:background="@drawable/backbutton" />
+
+        <LinearLayout
+            android:id="@+id/backbuttonbottom2_margin"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.07"
+            android:orientation="horizontal">
+        </LinearLayout>
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/signup_pwplease"
+            android:layout_gravity=""
+            android:layout_centerHorizontal="true">
+        </ImageView>
+
+        <LinearLayout
+            android:id="@+id/newpw_upper_margin"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.3"
+            android:orientation="horizontal">
+        </LinearLayout>
+
+        <EditText
+            android:id="@+id/newPw"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:background="@drawable/textlayout"
+            android:ems="10"
+            android:hint="비밀번호"
+            style="@style/Editpretendardmedium"
+            android:textColorHint="#FFFFFF"
+            android:inputType="textPassword"
+            android:text=""
+            android:paddingLeft="16dp"/>
+
+        <LinearLayout
+            android:id="@+id/newpw_middle_margin"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.03"
+            android:orientation="horizontal">
+        </LinearLayout>
+
+        <EditText
+            android:id="@+id/newPwCheck"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:background="@drawable/textlayout"
+            android:ems="10"
+            android:hint="비밀번호 확인"
+            style="@style/Editpretendardmedium"
+            android:textColorHint="#FFFFFF"
+            android:inputType="textPassword"
+            android:text=""
+            android:paddingLeft="16dp"/>
+
+        <LinearLayout
+            android:id="@+id/newpw_bottom_margin"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.03"
+            android:orientation="horizontal">
+        </LinearLayout>
+
+        <android.widget.Button
+            android:id="@+id/nextbutton2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:background="@drawable/nextbutton_default" />
+
+        <LinearLayout
+            android:id="@+id/signup2_bottom_margin"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.7"
+            android:orientation="horizontal">
+        </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/signup2_right_margin"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_weight="0.05"/>
+
+</LinearLayout>
