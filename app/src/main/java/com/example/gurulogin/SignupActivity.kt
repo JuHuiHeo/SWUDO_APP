@@ -26,8 +26,8 @@ class SignupActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_signup)
 
-        // firebase authentication 기능 가져오기
-        auth = Firebase.auth
+        // Firebase 인증 객체 초기화
+        auth = FirebaseAuth.getInstance()
 
         val newEmail = findViewById<EditText>(R.id.newEmail)
         val nextButton = findViewById<Button>(R.id.nextbutton)
@@ -110,8 +110,13 @@ class SignupActivity : AppCompatActivity() {
 
         // nextButton이 활성화 되면 "activity_signup.xml"에서 다음 페이지로 이동
         nextButton.setOnClickListener {
+            // 이메일 입력란의 텍스트 가져오기 (공백 제거)
+            val email = newEmail.text.toString().trim()
+
             if (nextButton.isEnabled) {
                 val intent = Intent(this@SignupActivity, SignupPwActivity::class.java)
+                //email 정보 넘기기(firebase)
+                intent.putExtra("email", email)
                 startActivity(intent)
                 finish() // 현재 액티비티를 종료합니다.
             }

@@ -8,7 +8,11 @@ import android.text.Editable
 import android.text.TextWatcher
 import android.view.MotionEvent
 import android.widget.Button
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.ktx.auth
+import com.google.firebase.ktx.Firebase
 import android.widget.EditText
+import com.google.firebase.firestore.FirebaseFirestore
 
 class SignupPwActivity : AppCompatActivity() {
     // 포커스를 받을 때와 받지 않을 때의 색상을 변수로 정의
@@ -20,9 +24,18 @@ class SignupPwActivity : AppCompatActivity() {
     private lateinit var newPwCheck: EditText
     private lateinit var nextButton2: Button
 
+    // firebase 설정
+    private lateinit var auth: FirebaseAuth
+    private lateinit var firestore: FirebaseFirestore
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_signup_pw)
+
+        // Firebase 인증 객체 초기화
+        auth = FirebaseAuth.getInstance()
+        // Firebase Firestore 객체 초기화
+        firestore = FirebaseFirestore.getInstance()
 
         // "activity_main"으로 이동하는 코드
         val backButton2 = findViewById<Button>(R.id.backbutton2)
@@ -130,11 +143,25 @@ class SignupPwActivity : AppCompatActivity() {
             }
         })
 
-        // 다음 페이지로 이동하는 코드
+        // 이전 액티비티에서 전달받은 이메일 정보 가져오기
+        val email = intent.getStringExtra("email")
+
+        // 다음 버튼 클릭 이벤트 처리
         nextButton2.setOnClickListener {
-            if (nextButton2.isEnabled) {
+            // 비밀번호 입력란의 텍스트 가져오기 (공백 제거)
+            val password = newPw.text.toString().trim()
+            val passwordCheck = newPwCheck.text.toString().trim()
+
+            // 비밀번호가 동일한지 검사
+            if (isSamePw(password, passwordCheck)) {
+                // 비밀번호가 동일하면 닉네임 입력 화면으로 이동
                 val intent = Intent(this@SignupPwActivity, SignupNicknameActivity::class.java)
+                intent.putExtra("email", email)
+                intent.putExtra("password", password)
                 startActivity(intent)
+            } else {
+                // 비밀번호가 다르면 사용자에게 알림
+                // 예를 들어, Toast 메시지를 띄우는 등의 처리를 추가하면 됨
             }
         }
     }

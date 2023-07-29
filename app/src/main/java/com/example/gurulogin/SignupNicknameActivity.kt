@@ -5,11 +5,16 @@ import android.graphics.Color
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
+import android.util.Log
 import android.util.Patterns
 import android.view.MotionEvent
 import android.widget.Button
 import android.widget.EditText
 import androidx.appcompat.app.AppCompatActivity
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.ktx.auth
+import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.ktx.Firebase
 import java.util.regex.Pattern
 
 class SignupNicknameActivity : AppCompatActivity() {
@@ -17,10 +22,20 @@ class SignupNicknameActivity : AppCompatActivity() {
     private val textColorFocused = Color.parseColor("#00FF75")
     private val textColorNotFocused = Color.WHITE
 
+    // firebase 연동
+    private lateinit var auth: FirebaseAuth
+    private lateinit var firestore: FirebaseFirestore
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_signup_nickname)
 
+        // Firebase 인증 객체 초기화
+        auth = FirebaseAuth.getInstance()
+        // Firebase Firestore 객체 초기화
+        firestore = FirebaseFirestore.getInstance()
+
+        // 각 id 받아오기
         val newNickname = findViewById<EditText>(R.id.newNickname)
         val completeButton = findViewById<Button>(R.id.completebutton)
 
@@ -90,13 +105,48 @@ class SignupNicknameActivity : AppCompatActivity() {
             }
         })
 
+        // 이전 액티비티에서 전달받은 이메일과 비밀번호 정보 가져오기
+        val email = intent.getStringExtra("email")
+        val password = intent.getStringExtra("password")
+
         // completeButton이 활성화 되면 "activity_signup.xml"에서 다음 페이지로 이동
         completeButton.setOnClickListener {
-            if (completeButton.isEnabled) {
-                val intent = Intent(this@SignupNicknameActivity, MainActivity::class.java)
-                startActivity(intent)
-                finish() // 현재 액티비티를 종료합니다.
-            }
+            // 닉네임 입력란의 텍스트 가져오기 (공백 제거)
+            val nickname = newNickname.text.toString().trim()
+
+            // Firebase 회원가입 처리
+            auth.createUserWithEmailAndPassword(email.toString(), password.toString())
+                .addOnCompleteListener(this) { task ->
+                    if (task.isSuccessful) {
+                        val user = auth.currentUser
+
+                        // 사용자 정보 Firestore에 저장
+                        if (user != null) {
+                            val userData = hashMapOf(
+                                "email" to email,
+                                "nickname" to nickname
+                                // 다른 필요한 정보도 추가 가능
+                            )
+                            firestore.collection("users").document(user.uid)
+                                .set(userData)
+                                .addOnSuccessListener {
+                                    // 회원가입 완료 후 로그인 화면으로 이동
+                                    val intent = Intent(
+                                        this@SignupNicknameActivity,MainActivity::class.java
+                                    )
+                                    startActivity(intent)
+                                    finish()
+                                }
+                                .addOnFailureListener { e ->
+                                    // 저장 실패 처리
+                                    Log.e("SignupNicknameActivity", "Firestore 저장 실패: ${e.message}")
+                                }
+                        }
+                    } else {
+                        // 회원가입 실패 처리
+                        Log.e("SignupNicknameActivity", "회원가입 실패: ${task.exception?.message}")
+                    }
+                }
         }
     }
 }

@@ -8,8 +8,11 @@ import android.text.Editable
 import android.text.TextWatcher
 import android.view.MotionEvent
 import android.widget.Button
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.ktx.auth
+import com.google.firebase.ktx.Firebase
 import android.widget.EditText
-
+import android.widget.Toast
 
 
 class MainActivity : AppCompatActivity() {
@@ -17,10 +20,15 @@ class MainActivity : AppCompatActivity() {
     private val textColorFocused = Color.parseColor("#00FF75")
     private val textColorNotFocused = Color.WHITE
 
+    // firebase 연동
+    private lateinit var auth: FirebaseAuth
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
+        // Firebase 인증 객체 초기화
+        auth = FirebaseAuth.getInstance()
 
         // MainActivity.kt
         // editID, editPW, button, signupButton ID 불러오기
@@ -42,9 +50,27 @@ class MainActivity : AppCompatActivity() {
         // 초기 버튼 상태 설정
         updateButtonState(button, editID.text.toString(), editPW.text.toString())
         button.setOnClickListener {
-            // 버튼 클릭 시 아이디와 비밀번호가 모두 채워져 있을 때만 실행
+            // 아이디와 비밀번호가 모두 채워져 있을 때만 실행
             if (editID.text.isNotBlank() && editPW.text.isNotBlank()) {
-                // TODO: 버튼을 눌렀을 때 실행할 동작을 여기에 작성
+                val email = editID.text.toString()
+                val password = editPW.text.toString()
+
+                // Firebase 로그인 처리
+                auth.signInWithEmailAndPassword(email, password)
+                    .addOnCompleteListener(this) { task ->
+                        if (task.isSuccessful) {
+                            // 로그인 성공 시 처리할 코드 (예: 다음 페이지로 이동)
+                            val intent = Intent(this@MainActivity, ExActivity::class.java)
+                            startActivity(intent)
+                        } else {
+                            // 로그인 실패 시 처리할 코드 (예: 에러 메시지 출력)
+                            Toast.makeText(
+                                this@MainActivity,
+                                "로그인에 실패했습니다. 이메일과 비밀번호를 확인해주세요.",
+                                Toast.LENGTH_SHORT
+                            ).show()
+                        }
+                    }
             }
         }
 
@@ -132,6 +158,7 @@ class MainActivity : AppCompatActivity() {
             button.setBackgroundResource(R.drawable.loginbutton_default)
         }
     }
+
 
 
 }
