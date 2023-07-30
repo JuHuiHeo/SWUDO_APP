@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity"
+    android:orientation="horizontal"
+    android:background="#0F1012">
+
+    <LinearLayout
+        android:id="@+id/signup2_left_margin"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_weight="0.05"/>
+
+    <!-- 첫 번째 LinearLayout (수평 방향) -->
+    <LinearLayout
+        android:id="@+id/first2_horizontal_layout"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="0.5"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:id="@+id/signup2_upper_margin"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.15"
+            android:orientation="horizontal">
+        </LinearLayout>
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/main_swudo"
+            android:layout_gravity=""
+            android:layout_centerHorizontal="true">
+        </ImageView>
+
+        <LinearLayout
+            android:id="@+id/backbuttonbottom2_margin"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.07"
+            android:orientation="horizontal">
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/nicknameTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            android:textColor="#00FF75"
+            android:background="@null"
+            style="@style/Editpretendardmedium"
+            tools:text="닉네임을 여기에 표시합니다."
+            />
+        <LinearLayout
+            android:id="@+id/nickname_bottom_margin"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.005"
+            android:orientation="horizontal">
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/nicknameTextView2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            android:textColor="#00FF75"
+            android:background="@null"
+            style="@style/Editpretendardmedium"
+            android:text="오늘도 힘차게 달려보아요!"
+            />
+
+        <LinearLayout
+            android:id="@+id/newpw_upper_margin"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.2"
+            android:orientation="horizontal">
+        </LinearLayout>
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/main_group"
+            android:layout_gravity=""
+            android:layout_centerHorizontal="true">
+        </ImageView>
+
+        <LinearLayout
+            android:id="@+id/signup2_bottom_margin"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.7"
+            android:orientation="horizontal">
+        </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/signup2_right_margin"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_weight="0.05"/>
+
+</LinearLayout>

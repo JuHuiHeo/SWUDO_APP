@@ -14,9 +14,10 @@ import com.google.firebase.ktx.Firebase
 import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
+import androidx.core.text.HtmlCompat
 import com.google.firebase.firestore.FirebaseFirestore
 
-class ExActivity : AppCompatActivity() {
+class MenuActivity : AppCompatActivity() {
 
     private lateinit var auth: FirebaseAuth
     private lateinit var firestore: FirebaseFirestore
@@ -24,7 +25,7 @@ class ExActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_ex)
+        setContentView(R.layout.activity_menu)
 
         // Firebase 인증과 Firestore 초기화
         auth = FirebaseAuth.getInstance()
@@ -41,20 +42,23 @@ class ExActivity : AppCompatActivity() {
                 .addOnSuccessListener { documentSnapshot ->
                     if (documentSnapshot.exists()) {
                         val nickname = documentSnapshot.getString("nickname")
-                        showNickname(nickname)
+                        val welcomeMessage = getString(R.string.welcome_message, nickname)
+                        showNickname(welcomeMessage)
                     } else {
-                        showNickname("닉네임 없음")
+                        val welcomeMessage = getString(R.string.welcome_message, "닉네임 없음")
+                        showNickname(welcomeMessage)
                     }
                 }
                 .addOnFailureListener {
-                    showNickname("닉네임 가져오기 실패")
+                    val welcomeMessage = getString(R.string.welcome_message, "닉네임 가져오기 실패")
+                    showNickname(welcomeMessage)
                 }
         }
     }
 
     // 닉네임을 화면에 표시하는 함수
-    private fun showNickname(nickname: String?) {
-        nicknameTextView.text = nickname ?: "닉네임 없음"
+    private fun showNickname(welcomeMessage: String?) {
+        nicknameTextView.text = HtmlCompat.fromHtml(welcomeMessage ?: "", HtmlCompat.FROM_HTML_MODE_LEGACY)
     }
-}
 
+}

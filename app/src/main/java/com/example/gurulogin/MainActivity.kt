@@ -60,7 +60,7 @@ class MainActivity : AppCompatActivity() {
                     .addOnCompleteListener(this) { task ->
                         if (task.isSuccessful) {
                             // 로그인 성공 시 처리할 코드 (예: 다음 페이지로 이동)
-                            val intent = Intent(this@MainActivity, ExActivity::class.java)
+                            val intent = Intent(this@MainActivity, MenuActivity::class.java)
                             startActivity(intent)
                         } else {
                             // 로그인 실패 시 처리할 코드 (예: 에러 메시지 출력)
