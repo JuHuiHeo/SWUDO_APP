@@ -1,2 +1,2 @@
 # SWUDO_APP
-gurulogin 구현 중
+로그인 페이지
